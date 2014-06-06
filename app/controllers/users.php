@@ -9,11 +9,13 @@ class Users extends CI_Controller {
 
   public function index() {
     $data['users'] = $this->user_model->get_data();
-    $this->load->view('users/index', $data);
+    $data['main_view'] = 'users/index';
+    $this->render($data);
   }
 
   public function create() {
-    $this->load->view('users/create');
+    $data['main_view'] = 'users/create';
+    $this->render($data);
   }
 
   public function store() {
@@ -38,7 +40,8 @@ class Users extends CI_Controller {
         $this->user_model->add($data);
         redirect('users');
       } else {
-        $this->load->view('users/create');
+        $data['main_view'] = 'users/create';
+        $this->render($data);
       }
     } else {
       redirect('users/create');
@@ -96,4 +99,10 @@ class Users extends CI_Controller {
     redirect('users');
   }
 
+  //
+  // private
+  //
+  public function render($data = null) {
+    return $this->load->view('template_backend/index', $data);
+  }
 }

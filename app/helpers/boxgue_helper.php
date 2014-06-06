@@ -11,6 +11,12 @@ if(!function_exists('assets_url')) {
   }
 }
 
+if(!function_exists('assetsbackend_url')) {
+  function assetsbackend_url($uri = '') {
+    return base_url().'assets/template/backend';
+  }
+}
+
 if(!function_exists('css_url')) {
   function css_url($uri = '') {
     return base_url().'assets/css/';
