@@ -14,7 +14,7 @@
     array(
       'name' => 'password',
       'value' => '',
-      'placeholder' => 'password',
+      'placeholder' => 'Password',
       'class' => 'input'
     )
   )?>
@@ -25,7 +25,7 @@
     array(
       'name' => 'passconf',
       'value' => '',
-      'placeholder' => 'passconf',
+      'placeholder' => 'Password Confirmation',
       'class' => 'input'
     )
   )?>
