@@ -68,6 +68,15 @@ if(!function_exists('check_login')) {
   }
 }
 
+if(!function_exists('check_admin_login')) {
+  function check_admin_login() {
+    $CI =& get_instance();
+    if($CI->session->userdata('login') == false || $CI->session->userdata('level_id') != 1) {
+      redirect('login');
+    }
+  }
+}
+
 if(!function_exists('class_name')) {
   function class_name() {
     $CI =& get_instance();
