@@ -71,11 +71,6 @@
                     <!-- start: Header Menu -->
                     <div class="nav-no-collapse header-nav">
                         <ul class="nav pull-right">
-                            <? /* <li>
-                              <a class="btn" href="#">
-                              <i class="icon-wrench icon-white"></i>
-                              </a>
-                              </li> */ ?>
                             <!-- start: User Dropdown -->
                             <li class="dropdown">
                                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
