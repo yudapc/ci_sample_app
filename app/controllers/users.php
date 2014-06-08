@@ -51,34 +51,43 @@ class Users extends CI_Controller {
   public function edit($id) {
     $this->session->set_userdata(array('user_id_edit' => $id));
     $data['user'] = $this->user_model->detail($id);
-    $this->load->view('users/edit', $data);
+    $data['main_view'] = 'users/edit';
+    $this->render($data);
   }
 
   public function update() {
     $id = $this->session->userdata('user_id_edit');
+    $data['user'] = $this->user_model->detail($id);
+    $data['main_view'] = 'users/edit';
+
     if($this->input->post('submit')) {
-      $this->form_validation->set_rules('password', 'Password', 'required');
-      $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
+      $this->form_validation->set_rules('password', 'Password', 'matches[passconf]');
+      $this->form_validation->set_rules('passconf', 'Password Confirmation');
       $this->form_validation->set_rules('full_name', 'Full Name', 'required');
       $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
       $this->form_validation->set_rules('phone', 'Phone', 'required|numeric');
 
       if($this->form_validation->run() == TRUE) {
         $data = array(
-                 'password' => md5($this->input->post('password')),
                  'full_name' => $this->input->post('full_name'),
                  'email' => $this->input->post('email'),
                  'phone' => $this->input->post('phone'),
                  'updated_at' => date('Y-m-d H:i'),
                  'updated_by' => $this->session->userdata('id'),
               );
+
+        $password = $this->input->post('password');
+        if($password) {
+          $data['password'] = md5($password);
+        }
+
         $this->user_model->update($id, $data);
         redirect('users');
       } else {
-        $this->load->view('users/edit/'.$id);
+        $this->render($data);
       }
     } else {
-       $this->load->view('users/edit/'.$id);
+        $this->render($data);
     }
   }
 

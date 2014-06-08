@@ -24,9 +24,9 @@
                 <td> <?=$user->username?> </td>
                 <td> <?=$user->full_name?> </td>
                 <td> <?=$user->email?> </td>
-                <td> <?=($user->status == 1) ? anchor('users/deactive/'.$user->id, 'Deactive') : anchor('users/active/'.$user->id, 'Active')?> </td>
-                <td> <?=anchor('users/edit/'.$user->id, 'Edit', array('onclick' => "return confirm('Anda yakin akan edit data ini?')"))?> </td>
-                <td> <?=anchor('users/delete/'.$user->id, 'Delete', array('onclick' => "return confirm('Anda yakin akan menghapus data ini?')"))?> </td>
+                <td> <?=($user->status == 1) ? anchor('users/deactive/'.$user->id, 'Deactive', array('onclick' => "return confirm('Do you want to deactive this data?')")) : anchor('users/active/'.$user->id, 'Active', array('onclick' => "return confirm('Do you want to active this data?')"))?> </td>
+                <td> <?=anchor('users/edit/'.$user->id, 'Edit', array('onclick' => "return confirm('Do you want to edit this data?')"))?> </td>
+                <td> <?=anchor('users/delete/'.$user->id, 'Delete', array('onclick' => "return confirm('Do you want to delete this data?')"))?> </td>
               </tr>
             <?php endforeach;?>
           <?php endif;?>

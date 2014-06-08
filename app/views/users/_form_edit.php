@@ -1,12 +1,18 @@
 <?php echo form_open('users/update')?>
 
-  <?php echo $this->session->userdata('username')?>
+  <?php echo form_input(
+    array(
+      'name' => 'username',
+      'value' => $user->username,
+      'disabled' => 'disabled'
+    )
+  )?>
   <br />
   <?php echo form_password(
     array(
       'name' => 'password',
       'value' => '',
-      'placeholder' => 'password',
+      'placeholder' => 'Password',
       'class' => 'input'
     )
   )?>
@@ -17,7 +23,7 @@
     array(
       'name' => 'passconf',
       'value' => '',
-      'placeholder' => 'passconf',
+      'placeholder' => 'Password Confirmation',
       'class' => 'input'
     )
   )?>
