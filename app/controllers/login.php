@@ -9,7 +9,7 @@ class Login extends CI_Controller {
 
   function index() {
     if ($this->session->userdata('login') == TRUE) {
-      redirect('welcome');
+      redirect('dashboard');
     } else {
       $this->load->view('login/form');
     }
@@ -34,7 +34,7 @@ class Login extends CI_Controller {
             'login' => TRUE,
         );
         $this->session->set_userdata($data);
-        redirect('welcome');
+        redirect('dashboard');
       } else {
         $this->session->set_flashdata('message', 'Maaf, username dan atau password Anda salah');
         redirect('login');
