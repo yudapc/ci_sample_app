@@ -1,0 +1,2 @@
+can use for get class name <?php echo $this->router->fetch_class();?>
+can use for get method name <?php echo $this->router->fetch_method();?>
