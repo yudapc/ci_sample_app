@@ -17,10 +17,14 @@ class Module extends CI_Model {
   }
 
   public function create($data) {
+    $data['created_at'] = date('Y-m-d H:i');
+    $data['created_by'] = $this->session->userdata('id');
     $this->db->insert($this->table, $data);
   }
 
   public function update($id, $data) {
+    $data['updated_at'] = date('Y-m-d H:i');
+    $data['updated_by'] = $this->session->userdata('id');
     $this->db->where('id', $id);
     $this->db->update($this->table, $data);
   }

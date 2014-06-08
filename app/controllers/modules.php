@@ -29,8 +29,6 @@ class Modules extends CI_Controller {
         $data = array(
                  'class' => $this->input->post('class'),
                  'action' => $this->input->post('action'),
-                 'created_at' => date('Y-m-d H:i'),
-                 'created_by' => $this->session->userdata('id'),
               );
         $this->module->create($data);
         redirect('modules');
@@ -65,8 +63,6 @@ class Modules extends CI_Controller {
         $data = array(
                  'class' => $this->input->post('class'),
                  'action' => $this->input->post('action'),
-                 'updated_at' => date('Y-m-d H:i'),
-                 'updated_by' => $this->session->userdata('id'),
               );
 
         $this->module->update($id, $data);
