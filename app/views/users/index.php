@@ -1,6 +1,7 @@
 <div class="row-fluid sortable">
   <div class="box span12">
     <div class="box-header" data-original-title>
+    <span> Manage <?php echo $this->router->fetch_class()?></span>
       <div class="box-icon">
         <a href="<?php echo site_url('users/create')?>" class="btn btn-primary">Add Data</a>
       </div>
@@ -26,7 +27,7 @@
                 <td> <?=$user->email?> </td>
                 <td> <?=($user->status == 1) ? anchor('users/deactive/'.$user->id, 'Deactive', array('onclick' => "return confirm('Do you want to deactive this data?')")) : anchor('users/active/'.$user->id, 'Active', array('onclick' => "return confirm('Do you want to active this data?')"))?> </td>
                 <td> <?=anchor('users/edit/'.$user->id, 'Edit', array('onclick' => "return confirm('Do you want to edit this data?')"))?> </td>
-                <td> <?=anchor('users/delete/'.$user->id, 'Delete', array('onclick' => "return confirm('Do you want to delete this data?')"))?> </td>
+                <td> <?=anchor('users/destroy/'.$user->id, 'Delete', array('onclick' => "return confirm('Do you want to delete this data?')"))?> </td>
               </tr>
             <?php endforeach;?>
           <?php endif;?>
