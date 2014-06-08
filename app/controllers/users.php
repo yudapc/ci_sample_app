@@ -92,7 +92,9 @@ class Users extends CI_Controller {
   }
 
   public function delete($id) {
-    $this->user_model->delete($id);
+    if($this->session->userdata('id') != $id) {
+      $this->user_model->delete($id);
+    }
     redirect('users');
   }
 
