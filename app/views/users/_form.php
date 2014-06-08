@@ -3,7 +3,7 @@
     array(
       'name' => 'username',
       'value' => set_value('username'),
-      'placeholder' => 'username',
+      'placeholder' => 'Username',
       'class' => 'input'
     )
   )?>
@@ -36,7 +36,7 @@
     array(
       'name' => 'full_name',
       'value' => set_value('full_name'),
-      'placeholder' => 'full_name',
+      'placeholder' => 'Full Name',
       'class' => 'input'
     )
   )?>
@@ -47,7 +47,7 @@
     array(
       'name' => 'email',
       'value' => set_value('email'),
-      'placeholder' => 'email',
+      'placeholder' => 'E-mail',
       'class' => 'input'
     )
   )?>
@@ -58,7 +58,7 @@
     array(
       'name' => 'phone',
       'value' => set_value('phone'),
-      'placeholder' => 'phone',
+      'placeholder' => 'Phone',
       'class' => 'input'
     )
   )?>
