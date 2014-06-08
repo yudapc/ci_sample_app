@@ -1,12 +1,9 @@
-			<div>
-				<hr>
-				<ul class="breadcrumb">
-					<li>
-						<a href="#">Home</a> 					</li>
-					<li>
-          <a href="#"><?=!empty($functionname) ? '<span class="divider">/</span>
-'.$functionname: '';?></a>
-					</li>
-				</ul>
-				<hr>
-			</div>
+<div>
+  <hr>
+  <ul class="breadcrumb">
+    <li>
+      Home&nbsp;/&nbsp;<?php echo preg_replace("/\//", " / ", uri_string()) ?>
+    </li>
+  </ul>
+  <hr>
+</div>
