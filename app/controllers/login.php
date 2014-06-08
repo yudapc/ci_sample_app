@@ -23,7 +23,7 @@ class Login extends CI_Controller {
       $username = $this->input->post('username');
       $password = md5($this->input->post('password'));
 
-      if ($this->user->auth($username, $password) == TRUE) {
+      if ($this->user->auth($username, $password)) {
         $user = $this->user->find_username($username);
         $data = array(
             'id' => $user->id,

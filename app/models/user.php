@@ -15,12 +15,6 @@ class User extends CI_Model {
     return $this->db->get()->result();
   }
 
-  public function group() {
-    $sql = "SELECT * FROM `group`";
-    $query = $this->db->query($sql);
-    return $query->result();
-  }
-
   public function find($id) {
     return $this->db->get_where($this->table, array('id' => $id))->row();
   }
@@ -43,29 +37,11 @@ class User extends CI_Model {
   }
 
   public function auth($username, $password) {
-    $query = $this->db->get_where($this->table, array('username' => $username, 'password' => $password, 'status' => 1), 1, 0);
-    if ($query->num_rows() > 0) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
+    return $this->db->get_where($this->table, array('username' => $username, 'password' => $password, 'status' => 1))->row();
   }
 
   public function count() {
     return $this->db->count_all($this->table);
   }
 
-  //
-  //private
-  //
-  private function valid_id($id) {
-    $query = $this->db->get_where($this->table, array('id' => $id));
-    if ($query->num_rows() > 0) {
-      return TRUE;
-    } else {
-      return FALSE;
-    }
-  }
-
 }
-
