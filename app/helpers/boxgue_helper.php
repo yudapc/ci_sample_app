@@ -67,3 +67,17 @@ if(!function_exists('check_login')) {
     }
   }
 }
+
+if(!function_exists('class_name')) {
+  function class_name() {
+    $CI =& get_instance();
+    return $CI->router->fetch_class();
+  }
+}
+
+if(!function_exists('action_name')) {
+  function action_name() {
+    $CI =& get_instance();
+    return $CI->router->fetch_method();
+  }
+}
