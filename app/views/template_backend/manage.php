@@ -3,7 +3,7 @@
     <div class="box-header" data-original-title>
     <span> Manage <?php echo class_name()?></span>
       <div class="box-icon">
-        <a href="<?php echo site_url('users/create')?>" class="btn btn-primary">Add Data</a>
+        <a href="<?php echo site_url(class_name().'/create')?>" class="btn btn-primary">Add Data</a>
       </div>
     </div>
     <div class="box-content">
