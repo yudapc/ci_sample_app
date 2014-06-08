@@ -34,8 +34,6 @@ class Users extends CI_Controller {
                  'full_name' => $this->input->post('full_name'),
                  'email' => $this->input->post('email'),
                  'phone' => $this->input->post('phone'),
-                 'created_at' => date('Y-m-d H:i'),
-                 'created_by' => $this->session->userdata('id'),
               );
         $this->user->create($data);
         redirect('users');
@@ -72,8 +70,6 @@ class Users extends CI_Controller {
                  'full_name' => $this->input->post('full_name'),
                  'email' => $this->input->post('email'),
                  'phone' => $this->input->post('phone'),
-                 'updated_at' => date('Y-m-d H:i'),
-                 'updated_by' => $this->session->userdata('id'),
               );
 
         $password = $this->input->post('password');

@@ -23,13 +23,17 @@ class User extends CI_Model {
     return $this->db->get_where($this->table, array('username' => $username))->row();
   }
 
-  public function create($user) {
-    $this->db->insert($this->table, $user);
+  public function create($data) {
+    $data['created_at'] = date('Y-m-d H:i');
+    $data['created_by'] = $this->session->userdata('id');
+    $this->db->insert($this->table, $data);
   }
 
-  public function update($id, $user) {
+  public function update($id, $data) {
+    $data['updated_at'] = date('Y-m-d H:i');
+    $data['updated_by'] = $this->session->userdata('id');
     $this->db->where('id', $id);
-    $this->db->update($this->table, $user);
+    $this->db->update($this->table, $data);
   }
 
   public function delete($id) {
