@@ -4,7 +4,7 @@ class Login extends CI_Controller {
 
   function __construct() {
     parent::__construct();
-    $this->load->model('Login_model', '', TRUE);
+    $this->load->model('user');
   }
 
   function index() {
@@ -23,8 +23,8 @@ class Login extends CI_Controller {
       $username = $this->input->post('username');
       $password = md5($this->input->post('password'));
 
-      if ($this->Login_model->check_user($username, $password) == TRUE) {
-        $user = $this->Login_model->detail($username);
+      if ($this->user->auth($username, $password) == TRUE) {
+        $user = $this->user->find_username($username);
         $data = array(
             'id' => $user->id,
             'username' => $username,

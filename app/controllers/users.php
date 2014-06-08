@@ -3,12 +3,12 @@ class Users extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
-    $this->load->model('user_model');
+    $this->load->model('user');
     check_login();
   }
 
   public function index() {
-    $data['users'] = $this->user_model->get_data();
+    $data['users'] = $this->user->all();
     $data['main_view'] = 'users/index';
     $this->render($data);
   }
@@ -37,7 +37,7 @@ class Users extends CI_Controller {
                  'created_at' => date('Y-m-d H:i'),
                  'created_by' => $this->session->userdata('id'),
               );
-        $this->user_model->add($data);
+        $this->user->create($data);
         redirect('users');
       } else {
         $data['main_view'] = 'users/create';
@@ -50,14 +50,14 @@ class Users extends CI_Controller {
 
   public function edit($id) {
     $this->session->set_userdata(array('user_id_edit' => $id));
-    $data['user'] = $this->user_model->detail($id);
+    $data['user'] = $this->user->find($id);
     $data['main_view'] = 'users/edit';
     $this->render($data);
   }
 
   public function update() {
     $id = $this->session->userdata('user_id_edit');
-    $data['user'] = $this->user_model->detail($id);
+    $data['user'] = $this->user->find($id);
     $data['main_view'] = 'users/edit';
 
     if($this->input->post('submit')) {
@@ -81,7 +81,7 @@ class Users extends CI_Controller {
           $data['password'] = md5($password);
         }
 
-        $this->user_model->update($id, $data);
+        $this->user->update($id, $data);
         redirect('users');
       } else {
         $this->render($data);
@@ -91,29 +91,31 @@ class Users extends CI_Controller {
     }
   }
 
-  public function delete($id) {
+  public function destroy($id) {
     if($this->session->userdata('id') != $id) {
-      $this->user_model->delete($id);
+      $this->user->delete($id);
     }
     redirect('users');
   }
 
   public function active($id) {
     $data = array('status' => 1);
-    $this->user_model->update($id, $data);
+    $this->user->update($id, $data);
     redirect('users');
   }
 
   public function deactive($id) {
-    $data = array('status' => 0);
-    $this->user_model->update($id, $data);
+    if($this->session->userdata('id') != $id) {
+      $data = array('status' => 0);
+      $this->user->update($id, $data);
+    }
     redirect('users');
   }
 
   //
   // private
   //
-  public function render($data = null) {
+  private function render($data = null) {
     return $this->load->view('template_backend/index', $data);
   }
 }
