@@ -83,7 +83,7 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="<?= site_url('admin/user/change_pass') ?>"><i class="icon-user"></i> Change Password</a></li>
+                                    <li><a href="<?= site_url('users/edit/'.$this->session->userdata('id')) ?>"><i class="icon-user"></i> My Account</a></li>
                                     <li><a href="<?= site_url('login/logout') ?>"><i class="icon-off"></i> Logout</a></li>
                                 </ul>
                             </li>
