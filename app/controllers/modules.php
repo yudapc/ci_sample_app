@@ -23,12 +23,10 @@ class Modules extends CI_Controller {
     $data['form_action'] = 'modules/store';
     if($this->input->post('submit')) {
       $this->form_validation->set_rules('class', 'Module', 'required');
-      $this->form_validation->set_rules('action', 'Action', 'required');
 
       if($this->form_validation->run() == TRUE) {
         $data = array(
                  'class' => $this->input->post('class'),
-                 'action' => $this->input->post('action'),
               );
         $this->module->create($data);
         redirect('modules');
@@ -57,12 +55,10 @@ class Modules extends CI_Controller {
 
     if($this->input->post('submit')) {
       $this->form_validation->set_rules('class', 'Module', 'required');
-      $this->form_validation->set_rules('action', 'Action', 'required');
 
       if($this->form_validation->run() == TRUE) {
         $data = array(
                  'class' => $this->input->post('class'),
-                 'action' => $this->input->post('action'),
               );
 
         $this->module->update($id, $data);

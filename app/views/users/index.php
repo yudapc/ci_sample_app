@@ -3,6 +3,7 @@
     <td> User </td>
     <td> Level </td>
     <td> Status </td>
+    <td> Roles </td>
     <td> Delete </td>
   </tr>
 </thead>
@@ -13,6 +14,7 @@
         <td> <?php echo anchor("users/edit/{$user->id}", $user->full_name ."(".$user->username.")") ?> </td>
         <td> <?php echo $user->level ?></td>
         <td> <?=($user->status == 1) ? anchor('users/deactive/'.$user->id, 'Deactive', array('onclick' => "return confirm('Do you want to deactive this data?')")) : anchor('users/active/'.$user->id, 'Active', array('onclick' => "return confirm('Do you want to active this data?')"))?> </td>
+        <td> <?=anchor('roles/form/'.$user->id, 'Roles')?> </td>
         <td> <?=anchor('users/destroy/'.$user->id, 'Delete', array('onclick' => "return confirm('Do you want to delete this data?')"))?> </td>
       </tr>
     <?php endforeach;?>
