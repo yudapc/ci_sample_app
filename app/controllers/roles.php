@@ -12,9 +12,6 @@ class Roles extends MY_Controller {
   }
 
   public function form($user_id = null) {
-    if(!$user_id) {
-      $this->session->userdata('user_id');
-    }
     $this->session->set_userdata(array('user_id' => $user_id));
     $data['roles'] = $this->role->roles($user_id);
     $data['main_view'] = 'roles/index';
