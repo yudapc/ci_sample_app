@@ -90,3 +90,10 @@ if(!function_exists('action_name')) {
     return $CI->router->fetch_method();
   }
 }
+
+if(!function_exists('user_id')) {
+  function user_id() {
+    $CI =& get_instance();
+    return $CI->session->userdata('id');
+  }
+}
