@@ -21,7 +21,7 @@
           <?php if ($roles) : ?>
             <?php  foreach($roles as $index=>$role): ?>
             <tr class="<?php echo ($index%2 == 0) ? 'zebra' : 'cross'?>">
-                <td> <?php echo anchor('roles/edit/'.$role->id, $role->class)?> </td>
+                <td> <?php echo anchor('roles/edit/'.$role->id, $role->class. ' ('.anchor('roles/destroy/'.$role->id, 'Delete').')')?> </td>
                 <td> <?php echo form_checkbox(array(
                                                 'name' => 'index',
                                                 'value' => $role->index,

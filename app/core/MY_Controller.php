@@ -7,8 +7,18 @@ class MY_Controller extends CI_Controller {
   }
 
   public function role() {
+    // die(action_name());
     $role = $this->user->roles();
-    $actions_allow = array('active', 'deactive', 'form', 'store', 'update', 'status');
+    $actions_allow = array(
+                      'dashboard',
+                      'active',
+                      'deactive',
+                      'form',
+                      'store',
+                      'update',
+                      'status',
+                      'profile'
+                    );
     if(in_array(action_name(), $actions_allow) || $role->{action_name()} == true) {
     } else {
       redirect('dashboard');

@@ -86,8 +86,8 @@ class Roles extends MY_Controller {
   }
 
   public function destroy($id) {
-    // $this->module->delete($id);
-    // redirect('modules');
+    $this->role->delete($id);
+    redirect('roles/form/'.$this->session->userdata('user_id'));
   }
 
 }

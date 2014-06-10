@@ -46,7 +46,10 @@ class Users extends MY_Controller {
     }
   }
 
-  public function edit($id) {
+  public function edit($id = null) {
+    if(is_null($id)) {
+      $id = user_id();
+    }
     $this->session->set_userdata(array('user_id_edit' => $id));
     $data['user'] = $this->user->find($id);
     $data['main_view'] = 'users/edit';
@@ -106,6 +109,10 @@ class Users extends MY_Controller {
       $this->user->update($id, $data);
     }
     redirect('users');
+  }
+
+  public function profile() {
+    $this->edit();
   }
 
 }
