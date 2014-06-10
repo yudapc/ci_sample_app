@@ -55,27 +55,30 @@ class Roles extends MY_Controller {
   }
 
   public function edit($id) {
-    $this->session->set_userdata(array('role_id_edit' => $id));
     $data['modules'] = $this->role->modules();
     $data['role'] = $this->role->find($id);
-    $data['form_action'] = 'roles/update';
+    $data['form_action'] = 'roles/update/'.$id;
     $data['main_view'] = 'roles/edit';
     $this->render($data);
   }
 
-  public function update() {
-    $id = $this->session->userdata('module_id_edit');
+  public function update($id) {
     $data['modules'] = $this->role->modules();
     $data['role'] = $this->role->find($id);
-    $data['form_action'] = 'role/update';
+    $data['form_action'] = 'roles/update/'.$id;
     $data['main_view'] = 'role/edit';
 
     if($this->input->post('submit')) {
+      $index = ($this->input->post('index') == 1) ? $this->input->post('index') : 0;
+      $create = ($this->input->post('create') == 1) ? $this->input->post('create') : 0;
+      $edit = ($this->input->post('edit') == 1) ? $this->input->post('edit') : 0;
+      $destroy = ($this->input->post('destroy') == 1) ? $this->input->post('destroy') : 0;
+
       $data = array(
-               'index' => $this->input->post('index'),
-               'create' => $this->input->post('create'),
-               'edit' => $this->input->post('edit'),
-               'destroy' => $this->input->post('destroy'),
+               'index' => $index,
+               'create' => $create,
+               'edit' => $edit,
+               'destroy' => $destroy,
             );
 
       $this->role->update($id, $data);
