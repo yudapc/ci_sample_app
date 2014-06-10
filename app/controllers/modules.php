@@ -1,5 +1,5 @@
 <?php
-class Modules extends CI_Controller {
+class Modules extends MY_Controller {
 
   public function __construct() {
     parent::__construct();
@@ -76,10 +76,4 @@ class Modules extends CI_Controller {
     redirect('modules');
   }
 
-  //
-  // private
-  //
-  private function render($data = null) {
-    return $this->load->view('template_backend/index', $data);
-  }
 }

@@ -1,5 +1,5 @@
 <?php
-class Users extends CI_Controller {
+class Users extends MY_Controller {
 
   public function __construct() {
     parent::__construct();
@@ -108,10 +108,4 @@ class Users extends CI_Controller {
     redirect('users');
   }
 
-  //
-  // private
-  //
-  private function render($data = null) {
-    return $this->load->view('template_backend/index', $data);
-  }
 }
