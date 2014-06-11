@@ -97,3 +97,28 @@ if(!function_exists('user_id')) {
     return $CI->session->userdata('id');
   }
 }
+
+if(!function_exists('check_role')) {
+  function check_role($class, $action) {
+    $CI =& get_instance();
+    $actions_allow = array(
+                      'dashboard',
+                      'active',
+                      'deactive',
+                      'form',
+                      'status',
+                      'profile'
+                    );
+    if(in_array($action, $actions_allow)) {
+      return true;
+    }
+
+    $roles = $CI->user->menu_auth();
+    foreach($roles as $key => $role)   {
+      if ( $role['class'] == $class ){
+        return $roles[$key][$action];
+      }
+    }
+    return false;
+  }
+}
