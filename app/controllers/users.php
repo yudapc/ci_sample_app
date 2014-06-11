@@ -53,6 +53,12 @@ class Users extends MY_Controller {
     $this->session->set_userdata(array('user_id_edit' => $id));
     $data['user'] = $this->user->find($id);
     $data['main_view'] = 'users/edit';
+
+    if(check_role('users', 'update')) {
+      $data['form_action_edit'] = 'users/update';
+    } else {
+      $data['form_action_edit'] = 'profile';
+    }
     $this->render($data);
   }
 
@@ -60,6 +66,12 @@ class Users extends MY_Controller {
     $id = $this->session->userdata('user_id_edit');
     $data['user'] = $this->user->find($id);
     $data['main_view'] = 'users/edit';
+
+    if(check_role('users', 'update')) {
+      $data['form_action_edit'] = 'users/update';
+    } else {
+      $data['form_action_edit'] = 'profile';
+    }
 
     if($this->input->post('submit')) {
       $this->form_validation->set_rules('password', 'Password', 'matches[passconf]');
@@ -112,6 +124,9 @@ class Users extends MY_Controller {
   }
 
   public function profile() {
+    if($this->input->post('submit')) {
+      $this->update();
+    }
     $this->edit();
   }
 

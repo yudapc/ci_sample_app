@@ -1,4 +1,4 @@
-<?php echo form_open('users/update')?>
+<?php echo form_open($form_action_edit)?>
 
   <?php echo form_input(
     array(
@@ -63,5 +63,5 @@
   <?php echo form_error('phone')?>
 
   <br />
-  <?php echo form_submit('submit', 'Update User')?>
+  <?php echo form_submit('submit', 'Update Data')?>
 <?php echo form_close()?>
