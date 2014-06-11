@@ -12,10 +12,21 @@
 
                         </ul>
                     </li>
-                    <li><a href="<?=site_url('products')?>"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Product</span></a></li>
-                    <li><a href="<?=site_url('customers')?>"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Customers</span></a></li>
-                    <li><a href="<?=site_url('users')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Users</span></a></li>
-                    <li><a href="<?=site_url('modules')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Modules</span></a></li>
+                    <?php if(check_role('products', 'index')): ?>
+                      <li><a href="<?=site_url('products')?>"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Product</span></a></li>
+                    <?php endif?>
+
+                    <?php if(check_role('customers', 'index')): ?>
+                      <li><a href="<?=site_url('customers')?>"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Customers</span></a></li>
+                    <?php endif?>
+
+                    <?php if(check_role('users', 'index')): ?>
+                      <li><a href="<?=site_url('users')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Users</span></a></li>
+                    <?php endif?>
+
+                    <?php if(check_role('modules', 'index')): ?>
+                      <li><a href="<?=site_url('modules')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Modules</span></a></li>
+                    <?php endif?>
                     <? /*
                       <li><a href="chart.html"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Charts</span></a></li>
 
