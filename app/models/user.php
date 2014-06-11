@@ -29,4 +29,13 @@ class User extends MY_Model {
     return $this->db->get()->row();
   }
 
+  public function menu_auth() {
+    $this->db->select('modules.`class`, roles.`index`, roles.`create`, roles.`edit`, roles.`update`,roles.`destroy`');
+    $this->db->from('roles');
+    $this->db->join('modules', 'modules.id=roles.module_id', 'left');
+    $this->db->join('users', 'users.id=roles.user_id', 'left');
+    $this->db->where('roles.user_id', user_id());
+    return $this->db->get()->result_array();
+  }
+
 }

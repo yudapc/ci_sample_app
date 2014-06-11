@@ -3,26 +3,14 @@ class MY_Controller extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
-    $this->role();
+    $this->check_action_role();
   }
 
-  public function role() {
-    // die(action_name());
-    $role = $this->user->roles();
-    $actions_allow = array(
-                      'dashboard',
-                      'active',
-                      'deactive',
-                      'form',
-                      'store',
-                      'update',
-                      'status',
-                      'profile'
-                    );
-    if(in_array(action_name(), $actions_allow) || $role->{action_name()} == true) {
-    } else {
-      redirect('dashboard');
+  public function check_action_role() {
+    if(check_role(class_name(), action_name())) {
+      return true;
     }
+    redirect('dashboard');
   }
 
   protected function render($data = null) {
