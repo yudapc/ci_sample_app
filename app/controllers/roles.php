@@ -37,7 +37,9 @@ class Roles extends MY_Controller {
                  'user_id' => $this->session->userdata('user_id'),
                  'index' => $this->input->post('index'),
                  'create' => $this->input->post('create'),
+                 'store' => $this->input->post('store'),
                  'edit' => $this->input->post('edit'),
+                 'update' => $this->input->post('update'),
                  'destroy' => $this->input->post('destroy'),
               );
         $this->role->create($data);
@@ -68,13 +70,17 @@ class Roles extends MY_Controller {
     if($this->input->post('submit')) {
       $index = ($this->input->post('index') == 1) ? $this->input->post('index') : 0;
       $create = ($this->input->post('create') == 1) ? $this->input->post('create') : 0;
+      $store = ($this->input->post('store') == 1) ? $this->input->post('store') : 0;
       $edit = ($this->input->post('edit') == 1) ? $this->input->post('edit') : 0;
+      $update = ($this->input->post('update') == 1) ? $this->input->post('update') : 0;
       $destroy = ($this->input->post('destroy') == 1) ? $this->input->post('destroy') : 0;
 
       $data = array(
                'index' => $index,
                'create' => $create,
+               'store' => $store,
                'edit' => $edit,
+               'update' => $update,
                'destroy' => $destroy,
             );
 

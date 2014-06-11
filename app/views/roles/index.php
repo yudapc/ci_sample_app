@@ -13,7 +13,9 @@
             <td> Module </td>
             <td> Index </td>
             <td> Create </td>
+            <td> Store </td>
             <td> Edit </td>
+            <td> Update </td>
             <td> Destroy </td>
           </tr>
         </thead>
@@ -27,28 +29,42 @@
                                                 'value' => $role->index,
                                                 'checked' => $role->index,
                                                 'disabled' => 'disabled'
-                                              )) ?> 
+                                              )) ?>
                 </td>
                 <td> <?php echo form_checkbox(array(
                                                 'name' => 'create',
                                                 'value' => $role->create,
                                                 'checked' => $role->create,
                                                 'disabled' => 'disabled'
-                                              )) ?> 
+                                              )) ?>
+                </td>
+                <td> <?php echo form_checkbox(array(
+                                                'name' => 'store',
+                                                'value' => $role->store,
+                                                'checked' => $role->store,
+                                                'disabled' => 'disabled'
+                                              )) ?>
                 </td>
                 <td> <?php echo form_checkbox(array(
                                                 'name' => 'edit',
                                                 'value' => $role->edit,
                                                 'checked' => $role->edit,
                                                 'disabled' => 'disabled'
-                                              )) ?> 
+                                              )) ?>
+                </td>
+                <td> <?php echo form_checkbox(array(
+                                                'name' => 'update',
+                                                'value' => $role->update,
+                                                'checked' => $role->update,
+                                                'disabled' => 'disabled'
+                                              )) ?>
                 </td>
                 <td> <?php echo form_checkbox(array(
                                                 'name' => 'destroy',
                                                 'value' => $role->destroy,
                                                 'checked' => $role->destroy,
                                                 'disabled' => 'disabled'
-                                              )) ?> 
+                                              )) ?>
                 </td>
               </tr>
             <?php endforeach;?>

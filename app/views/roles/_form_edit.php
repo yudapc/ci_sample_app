@@ -23,12 +23,32 @@
   <?php echo form_error('create')?>
   <br />
 
+
+  <?php echo form_checkbox(array(
+    'name' => 'store',
+    'value' => 1,
+    'checked' => $role->store,
+  ))?>
+  Store<br />
+  <?php echo form_error('store')?>
+  <br />
+
   <?php echo form_checkbox(array(
     'name' => 'edit',
     'value' => 1,
     'checked' => $role->edit,
   ))?>
   Edit<br />
+  <?php echo form_error('edit')?>
+  <br />
+
+
+  <?php echo form_checkbox(array(
+    'name' => 'update',
+    'value' => 1,
+    'checked' => $role->update,
+  ))?>
+  Update<br />
   <?php echo form_error('edit')?>
   <br />
 
