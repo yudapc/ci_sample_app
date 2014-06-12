@@ -12,11 +12,13 @@
           <tr>
             <td> Module </td>
             <td> Index </td>
+            <td> Show </td>
             <td> Create </td>
             <td> Store </td>
             <td> Edit </td>
             <td> Update </td>
             <td> Destroy </td>
+            <td> Download </td>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +30,13 @@
                                                 'name' => 'index',
                                                 'value' => $role->index,
                                                 'checked' => $role->index,
+                                                'disabled' => 'disabled'
+                                              )) ?>
+                </td>
+                <td> <?php echo form_checkbox(array(
+                                                'name' => 'show',
+                                                'value' => $role->show,
+                                                'checked' => $role->show,
                                                 'disabled' => 'disabled'
                                               )) ?>
                 </td>
@@ -63,6 +72,13 @@
                                                 'name' => 'destroy',
                                                 'value' => $role->destroy,
                                                 'checked' => $role->destroy,
+                                                'disabled' => 'disabled'
+                                              )) ?>
+                </td>
+                <td> <?php echo form_checkbox(array(
+                                                'name' => 'download',
+                                                'value' => $role->download,
+                                                'checked' => $role->download,
                                                 'disabled' => 'disabled'
                                               )) ?>
                 </td>

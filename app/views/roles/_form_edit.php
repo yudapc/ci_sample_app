@@ -13,6 +13,13 @@
   <?php echo form_error('index')?>
   <br />
 
+  <?php echo form_checkbox(array(
+    'name' => 'show',
+    'value' => 1
+  ))?>
+  Show <br />
+  <?php echo form_error('show')?>
+  <br />
 
   <?php echo form_checkbox(array(
     'name' => 'create',
@@ -22,7 +29,6 @@
   Create<br />
   <?php echo form_error('create')?>
   <br />
-
 
   <?php echo form_checkbox(array(
     'name' => 'store',
@@ -59,6 +65,14 @@
   ))?>
   Destroy<br />
   <?php echo form_error('destroy')?>
+  <br />
+
+  <?php echo form_checkbox(array(
+    'name' => 'download',
+    'value' => 1
+  ))?>
+  Download<br />
+  <?php echo form_error('download')?>
   <br />
 
   <?php echo form_submit('submit', 'Create New Data')?>

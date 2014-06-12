@@ -36,11 +36,13 @@ class Roles extends MY_Controller {
                  'module_id' => $module_id,
                  'user_id' => $this->session->userdata('user_id'),
                  'index' => $this->input->post('index'),
+                 'show' => $this->input->post('show'),
                  'create' => $this->input->post('create'),
                  'store' => $this->input->post('store'),
                  'edit' => $this->input->post('edit'),
                  'update' => $this->input->post('update'),
                  'destroy' => $this->input->post('destroy'),
+                 'download' => $this->input->post('download'),
               );
         $this->role->create($data);
         redirect('roles/form/'.$this->session->userdata('user_id'));
@@ -69,19 +71,23 @@ class Roles extends MY_Controller {
 
     if($this->input->post('submit')) {
       $index = ($this->input->post('index') == 1) ? $this->input->post('index') : 0;
+      $show = ($this->input->post('show') == 1) ? $this->input->post('show') : 0;
       $create = ($this->input->post('create') == 1) ? $this->input->post('create') : 0;
       $store = ($this->input->post('store') == 1) ? $this->input->post('store') : 0;
       $edit = ($this->input->post('edit') == 1) ? $this->input->post('edit') : 0;
       $update = ($this->input->post('update') == 1) ? $this->input->post('update') : 0;
       $destroy = ($this->input->post('destroy') == 1) ? $this->input->post('destroy') : 0;
+      $download = ($this->input->post('download') == 1) ? $this->input->post('download') : 0;
 
       $data = array(
                'index' => $index,
+               'show' => $show,
                'create' => $create,
                'store' => $store,
                'edit' => $edit,
                'update' => $update,
                'destroy' => $destroy,
+               'download' => $download,
             );
 
       $this->role->update($id, $data);

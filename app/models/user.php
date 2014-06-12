@@ -30,7 +30,7 @@ class User extends MY_Model {
   }
 
   public function menu_auth() {
-    $this->db->select('modules.`class`, roles.`index`, roles.`create`, roles.`edit`, roles.`update`,roles.`destroy`');
+    $this->db->select('modules.`class`, roles.*');
     $this->db->from('roles');
     $this->db->join('modules', 'modules.id=roles.module_id', 'left');
     $this->db->join('users', 'users.id=roles.user_id', 'left');
