@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2014 at 11:32 PM
+-- Generation Time: Jun 12, 2014 at 10:40 PM
 -- Server version: 5.5.37-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4
 
@@ -71,28 +71,32 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `module_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `index` tinyint(1) NOT NULL DEFAULT '0',
+  `show` tinyint(1) NOT NULL DEFAULT '0',
   `create` tinyint(1) NOT NULL DEFAULT '0',
   `store` tinyint(1) NOT NULL DEFAULT '0',
   `edit` tinyint(1) NOT NULL DEFAULT '0',
   `update` tinyint(1) NOT NULL DEFAULT '0',
   `destroy` tinyint(1) NOT NULL DEFAULT '0',
+  `download` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `created_by` int(11) NOT NULL,
   `updated_at` datetime NOT NULL,
   `updated_by` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `module_id`, `user_id`, `index`, `create`, `store`, `edit`, `update`, `destroy`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-06-09 22:19:00', 1, '2014-06-10 22:54:00', 1),
-(5, 2, 1, 1, 1, 0, 0, 0, 0, '2014-06-10 01:27:00', 1, '2014-06-11 23:20:00', 1),
-(7, 2, 2, 0, 0, 0, 0, 0, 0, '2014-06-10 01:45:00', 1, '2014-06-11 23:20:00', 1),
-(12, 3, 1, 1, 1, 1, 1, 1, 1, '2014-06-10 22:54:00', 1, '2014-06-10 23:10:00', 1),
-(13, 4, 1, 1, 1, 1, 1, 1, 1, '2014-06-10 22:55:00', 1, '0000-00-00 00:00:00', 0);
+INSERT INTO `roles` (`id`, `module_id`, `user_id`, `index`, `show`, `create`, `store`, `edit`, `update`, `destroy`, `download`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-06-09 22:19:00', 1, '2014-06-12 22:11:00', 1),
+(5, 2, 1, 1, 0, 1, 0, 0, 0, 0, 0, '2014-06-10 01:27:00', 1, '2014-06-11 23:20:00', 1),
+(7, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, '2014-06-10 01:45:00', 1, '2014-06-11 23:20:00', 1),
+(12, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-06-10 22:54:00', 1, '2014-06-12 22:11:00', 1),
+(13, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-06-10 22:55:00', 1, '2014-06-12 22:11:00', 1),
+(14, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, '2014-06-12 22:17:00', 1, '0000-00-00 00:00:00', 0),
+(15, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, '2014-06-12 22:30:00', 1, '2014-06-12 22:38:00', 1);
 
 -- --------------------------------------------------------
 
