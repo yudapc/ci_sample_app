@@ -76,5 +76,5 @@
   <?php echo form_error('download')?>
   <br />
 
-  <?php echo form_submit('submit', 'Create New Data')?>
+  <?php echo form_submit('submit', 'Update Data')?>
 <?php echo form_close()?>
