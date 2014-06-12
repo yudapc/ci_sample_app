@@ -15,7 +15,8 @@
 
   <?php echo form_checkbox(array(
     'name' => 'show',
-    'value' => 1
+    'value' => 1,
+    'checked' => $role->show,
   ))?>
   Show <br />
   <?php echo form_error('show')?>
@@ -48,7 +49,6 @@
   <?php echo form_error('edit')?>
   <br />
 
-
   <?php echo form_checkbox(array(
     'name' => 'update',
     'value' => 1,
@@ -69,7 +69,8 @@
 
   <?php echo form_checkbox(array(
     'name' => 'download',
-    'value' => 1
+    'value' => 1,
+    'checked' => $role->download,
   ))?>
   Download<br />
   <?php echo form_error('download')?>
