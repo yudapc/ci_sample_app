@@ -18,11 +18,11 @@
         <td> <?php echo $module->class?> </td>
 
         <?php if(check_role(class_name(), 'edit')): ?>
-          <td> <?=anchor('modules/edit/'.$module->id, 'Edit', array('onclick' => "return confirm('Do you want to edit this data?')"))?> </td>
+          <td> <?=anchor('modules/edit/'.$module->id, '<i class="icon-edit"></i> Edit', array('onclick' => "return confirm('Do you want to edit this data?')"))?> </td>
         <?php endif?>
 
         <?php if(check_role(class_name(), 'destroy')): ?>
-          <td> <?=anchor('modules/destroy/'.$module->id, 'Delete', array('onclick' => "return confirm('Do you want to delete this data?')"))?> </td>
+          <td> <?=anchor('modules/destroy/'.$module->id, '<i class="icon-remove-sign"></i> Delete', array('onclick' => "return confirm('Do you want to delete this data?')"))?> </td>
         <?php endif?>
       </tr>
     <?php endforeach;?>
