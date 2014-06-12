@@ -4,7 +4,6 @@ class Modules extends MY_Controller {
   public function __construct() {
     parent::__construct();
     $this->load->model('module');
-    check_admin_login();
   }
 
   public function index() {

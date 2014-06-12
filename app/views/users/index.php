@@ -4,7 +4,9 @@
     <td> Level </td>
     <td> Status </td>
     <td> Roles </td>
-    <td> Delete </td>
+    <?php if(check_role(class_name(), 'destroy')): ?>
+      <td> Delete </td>
+    <?php endif?>
   </tr>
 </thead>
 <tbody>
@@ -15,7 +17,9 @@
         <td> <?php echo $user->level ?></td>
         <td> <?=($user->status == 1) ? anchor('users/deactive/'.$user->id, 'Deactive', array('onclick' => "return confirm('Do you want to deactive this data?')")) : anchor('users/active/'.$user->id, 'Active', array('onclick' => "return confirm('Do you want to active this data?')"))?> </td>
         <td> <?=anchor('roles/form/'.$user->id, 'Roles')?> </td>
-        <td> <?=anchor('users/destroy/'.$user->id, 'Delete', array('onclick' => "return confirm('Do you want to delete this data?')"))?> </td>
+        <?php if(check_role(class_name(), 'destroy')): ?>
+          <td> <?=anchor('users/destroy/'.$user->id, 'Delete', array('onclick' => "return confirm('Do you want to delete this data?')"))?> </td>
+        <?php endif?>
       </tr>
     <?php endforeach;?>
   <?php endif;?>
