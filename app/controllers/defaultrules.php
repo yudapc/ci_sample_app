@@ -1,39 +1,39 @@
 <?php
-class Rules extends MY_Controller {
+class Defaultrules extends MY_Controller {
 
   public function __construct() {
     parent::__construct();
-    $this->load->model('rule');
+    $this->load->model('defaultrule');
   }
 
   public function index() {
-    redirect('rules/form');
+    redirect('defaultrules/form');
   }
 
-  public function form($user_id = null) {
-    $this->session->set_userdata(array('user_id' => $user_id));
-    $data['rules'] = $this->rule->rules($user_id);
-    $data['main_view'] = 'rules/index';
+  public function form($level_id = null) {
+    $this->session->set_userdata(array('level_id' => $level_id));
+    $data['defaultrules'] = $this->defaultrule->defaultrules($level_id);
+    $data['main_view'] = 'defaultrules/index';
     $this->render($data);
   }
 
   public function create() {
-    $data['modules'] = $this->rule->modules();
-    $data['form_action'] = 'rules/store';
-    $data['main_view'] = 'rules/create';
+    $data['modules'] = $this->defaultrule->modules();
+    $data['form_action'] = 'defaultrules/store';
+    $data['main_view'] = 'defaultrules/create';
     $this->render($data);
   }
 
   public function store() {
-    $data['modules'] = $this->rule->modules();
-    $data['form_action'] = 'rules/store';
+    $data['modules'] = $this->defaultrule->modules();
+    $data['form_action'] = 'defaultrules/store';
     if($this->input->post('submit')) {
       $this->form_validation->set_rules('class', 'Module', 'required');
       $module_id = $this->input->post('class');
-      if($this->form_validation->run() == TRUE && $this->rule->check_module($module_id, $this->session->userdata('user_id')) == false) {
+      if($this->form_validation->run() == TRUE && $this->defaultrule->check_module($module_id, $this->session->userdata('module_id')) == false) {
         $data = array(
                  'module_id' => $module_id,
-                 'user_id' => $this->session->userdata('user_id'),
+                 'level_id' => $this->session->userdata('level_id'),
                  'index' => $this->input->post('index'),
                  'show' => $this->input->post('show'),
                  'create' => $this->input->post('create'),
@@ -43,30 +43,30 @@ class Rules extends MY_Controller {
                  'destroy' => $this->input->post('destroy'),
                  'download' => $this->input->post('download'),
               );
-        $this->rule->create($data);
-        redirect('rules/form/'.$this->session->userdata('user_id'));
+        $this->defaultrule->create($data);
+        redirect('defaultrules/form/'.$this->session->userdata('level_id'));
       } else {
-        $data['main_view'] = 'rules/create';
+        $data['main_view'] = 'defaultrules/create';
         $this->render($data);
       }
     } else {
-      redirect('rules/create');
+      redirect('defaultrules/create');
     }
   }
 
-  public function edit($id) {
-    $data['modules'] = $this->rule->modules();
-    $data['rule'] = $this->rule->find($id);
-    $data['form_action'] = 'rules/update/'.$id;
-    $data['main_view'] = 'rules/edit';
+  public function edit($id, $level_id) {
+    $data['modules'] = $this->defaultrule->modules();
+    $data['defaultrule'] = $this->defaultrule->find($id);
+    $data['form_action'] = 'defaultrules/update/'.$id.'/'.$level_id;
+    $data['main_view'] = 'defaultrules/edit';
     $this->render($data);
   }
 
-  public function update($id) {
-    $data['modules'] = $this->rule->modules();
-    $data['rule'] = $this->rule->find($id);
-    $data['form_action'] = 'rules/update/'.$id;
-    $data['main_view'] = 'rule/edit';
+  public function update($id, $level_id) {
+    $data['modules'] = $this->defaultrule->modules();
+    $data['defaultrule'] = $this->defaultrule->find($id);
+    $data['form_action'] = 'defaultrules/update/'.$id;
+    $data['main_view'] = 'defaultrule/edit';
 
     if($this->input->post('submit')) {
       $index = ($this->input->post('index') == 1) ? $this->input->post('index') : 0;
@@ -89,16 +89,16 @@ class Rules extends MY_Controller {
                'download' => $download,
             );
 
-      $this->rule->update($id, $data);
-      redirect('rules/form/'.$this->session->userdata('user_id'));
+      $this->defaultrule->update($id, $data);
+      redirect('defaultrules/form/'.$this->session->userdata('level_id'));
     } else {
         $this->render($data);
     }
   }
 
   public function destroy($id) {
-    $this->rule->delete($id);
-    redirect('rules/form/'.$this->session->userdata('user_id'));
+    $this->defaultrule->delete($id);
+    redirect('defaultrules/form/'.$this->session->userdata('module_id'));
   }
 
 }
