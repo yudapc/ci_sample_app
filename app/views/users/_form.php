@@ -1,4 +1,14 @@
 <?php echo form_open('users/store')?>
+
+  <?php 
+    $options = array();
+    foreach($levels as $level) {
+      $options[$level->id]= $level->level;
+    }
+    echo form_dropdown('level', $options);
+  ?>
+  <?php echo form_error('level')?>
+  <br />
   <?php echo form_input(
     array(
       'name' => 'username',

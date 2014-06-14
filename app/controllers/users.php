@@ -4,6 +4,8 @@ class Users extends MY_Controller {
   public function __construct() {
     parent::__construct();
     $this->load->model('user');
+    $this->load->model('defaultrule');
+    $this->load->model('rule');
     check_login();
   }
 
@@ -15,11 +17,14 @@ class Users extends MY_Controller {
 
   public function create() {
     $data['main_view'] = 'users/create';
+    $data['levels'] = $this->user->levels();
     $this->render($data);
   }
 
   public function store() {
+    $data['levels'] = $this->user->levels();
     if($this->input->post('submit')) {
+      $this->form_validation->set_rules('level', 'Level', 'required');
       $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
       $this->form_validation->set_rules('password', 'Password', 'required');
       $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
@@ -28,14 +33,32 @@ class Users extends MY_Controller {
       $this->form_validation->set_rules('phone', 'Phone', 'required|numeric');
 
       if($this->form_validation->run() == TRUE) {
+        $level_id = $this->input->post('level');
         $data = array(
                  'username' => $this->input->post('username'),
                  'password' => md5($this->input->post('password')),
+                 'level_id' => $level_id,
                  'full_name' => $this->input->post('full_name'),
                  'email' => $this->input->post('email'),
                  'phone' => $this->input->post('phone'),
               );
-        $this->user->create($data);
+        $user_id = $this->user->create($data);
+        $rules = $this->defaultrule->defaultrules($level_id);
+        foreach($rules as $rule) {
+          $datarule = array(
+            'module_id' => $rule->module_id,
+            'user_id' => $user_id,
+            'index' => $rule->index,
+            'show' => $rule->show,
+            'create' => $rule->create,
+            'store' => $rule->store,
+            'edit' => $rule->edit,
+            'update' => $rule->update,
+            'destroy' => $rule->destroy,
+            'download' => $rule->download,
+          );
+          $this->rule->create($datarule);
+        }
         redirect('users');
       } else {
         $data['main_view'] = 'users/create';

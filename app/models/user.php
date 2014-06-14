@@ -38,4 +38,16 @@ class User extends MY_Model {
     return $this->db->get()->result_array();
   }
 
+  public function create($data) {
+    $data['created_at'] = date('Y-m-d H:i');
+    $data['created_by'] = user_id();
+    $this->db->insert($this->table, $data);
+    // die(print_r($this->db->insert_id()));
+    return $this->db->insert_id();
+  }
+
+  public function levels() {
+    return $this->db->get('levels')->result();
+  }
+
 }
