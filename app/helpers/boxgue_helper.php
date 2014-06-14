@@ -122,3 +122,9 @@ if(!function_exists('check_rule')) {
     return false;
   }
 }
+
+if(!function_exists('input_id')) {
+  function input_id($id) {
+    return abs((int) $id);
+  }
+}
