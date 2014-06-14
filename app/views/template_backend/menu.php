@@ -13,7 +13,7 @@
                         </ul>
                     </li>
                     <?php if(check_rule('products', 'index')): ?>
-                      <li><a href="<?=site_url('products')?>"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Product</span></a></li>
+                      <li><a href="<?=site_url('products')?>"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Products</span></a></li>
                     <?php endif?>
 
                     <?php if(check_rule('customers', 'index')): ?>
