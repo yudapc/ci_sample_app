@@ -26,6 +26,10 @@
                           <ul>
                             <li><a href="<?=site_url('users')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Users</span></a></li>
 
+                            <?php if(check_rule('levels', 'index')): ?>
+                              <li><a href="<?=site_url('levels')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Levels</span></a></li>
+                            <?php endif?>
+
                             <?php if(check_rule('modules', 'index')): ?>
                               <li><a href="<?=site_url('modules')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Modules</span></a></li>
                             <?php endif?>
