@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 14, 2014 at 04:13 PM
+-- Generation Time: Jun 14, 2014 at 05:03 PM
 -- Server version: 5.5.37-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `default_rules` (
   `updated_at` datetime NOT NULL,
   `updated_by` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `default_rules`
@@ -50,7 +50,8 @@ INSERT INTO `default_rules` (`id`, `level_id`, `module_id`, `index`, `show`, `cr
 (5, 1, 4, 1, 1, 1, 1, 1, 1, 0, 0, '2014-06-14 16:07:00', 1, '2014-06-14 16:08:00', 1),
 (6, 1, 5, 1, 1, 1, 1, 1, 1, 0, 0, '2014-06-14 16:08:00', 1, '0000-00-00 00:00:00', 0),
 (7, 1, 6, 1, 1, 1, 1, 1, 1, 0, 0, '2014-06-14 16:08:00', 1, '0000-00-00 00:00:00', 0),
-(8, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, '2014-06-14 16:09:00', 1, '0000-00-00 00:00:00', 0);
+(8, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, '2014-06-14 16:09:00', 1, '0000-00-00 00:00:00', 0),
+(9, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0, '2014-06-14 16:15:00', 1, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -108,6 +109,34 @@ INSERT INTO `modules` (`id`, `class`, `created_at`, `created_by`, `updated_at`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `types_of_product_id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `unit` varchar(25) NOT NULL,
+  `purchase_price` double NOT NULL,
+  `selling_price` double NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `updated_by` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `types_of_product_id`, `name`, `unit`, `purchase_price`, `selling_price`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(1, 1, 'Urea', 'Kg', 11000, 14000, '2014-06-13 22:02:00', 1, '2014-06-13 23:41:00', 1),
+(2, 1, 'Pestisida', 'Kg', 15000, 18000, '2014-06-13 23:42:00', 1, '0000-00-00 00:00:00', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rules`
 --
 
@@ -127,8 +156,9 @@ CREATE TABLE IF NOT EXISTS `rules` (
   `created_by` int(11) NOT NULL,
   `updated_at` datetime NOT NULL,
   `updated_by` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `rules`
@@ -136,14 +166,33 @@ CREATE TABLE IF NOT EXISTS `rules` (
 
 INSERT INTO `rules` (`id`, `module_id`, `user_id`, `index`, `show`, `create`, `store`, `edit`, `update`, `destroy`, `download`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
 (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-06-09 22:19:00', 1, '2014-06-12 22:11:00', 1),
-(7, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, '2014-06-10 01:45:00', 1, '2014-06-11 23:20:00', 1),
 (12, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-06-10 22:54:00', 1, '2014-06-12 22:11:00', 1),
 (13, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2014-06-10 22:55:00', 1, '2014-06-12 22:11:00', 1),
-(14, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, '2014-06-12 22:17:00', 1, '0000-00-00 00:00:00', 0),
-(15, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, '2014-06-12 22:30:00', 1, '2014-06-12 22:38:00', 1),
 (16, 2, 1, 1, 1, 1, 1, 1, 1, 0, 0, '2014-06-14 15:04:00', 1, '2014-06-14 15:05:00', 1),
 (17, 5, 1, 1, 1, 1, 1, 1, 1, 0, 0, '2014-06-14 15:23:00', 1, '2014-06-14 15:34:00', 1),
-(18, 6, 1, 1, 1, 1, 1, 1, 1, 1, 0, '2014-06-14 15:51:00', 1, '0000-00-00 00:00:00', 0);
+(18, 6, 1, 1, 1, 1, 1, 1, 1, 1, 0, '2014-06-14 15:51:00', 1, '0000-00-00 00:00:00', 0),
+(20, 2, 8, 1, 1, 1, 1, 1, 1, 0, 0, '2014-06-14 17:01:00', 1, '0000-00-00 00:00:00', 0),
+(21, 2, 9, 1, 1, 0, 0, 0, 0, 0, 0, '2014-06-14 17:02:00', 1, '0000-00-00 00:00:00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `types_of_products`
+--
+
+CREATE TABLE IF NOT EXISTS `types_of_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `types_of_products`
+--
+
+INSERT INTO `types_of_products` (`id`, `type`) VALUES
+(1, 'Subsidi'),
+(2, 'Non Subsidi');
 
 -- --------------------------------------------------------
 
@@ -165,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` datetime NOT NULL,
   `updated_by` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `users`
@@ -173,5 +222,16 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `full_name`, `email`, `phone`, `level_id`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
 (1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'administrator', 'info2@boxgue.com', '085769796363', 1, 1, '2014-05-31 11:00:00', 0, '2014-06-10 22:07:00', 1),
-(2, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', 'user test', 'info@boxgue.com', '085769796363', 2, 1, '0000-00-00 00:00:00', 0, '2014-06-11 23:26:00', 2);
+(8, 'manager', '5f4dcc3b5aa765d61d8327deb882cf99', 'Manager', 'manager@it.id', '085769796363', 2, 1, '2014-06-14 17:01:00', 1, '0000-00-00 00:00:00', 0),
+(9, 'user', '5f4dcc3b5aa765d61d8327deb882cf99', 'User', 'user@it.id', '085769796363', 3, 1, '2014-06-14 17:02:00', 1, '0000-00-00 00:00:00', 0);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `rules`
+--
+ALTER TABLE `rules`
+  ADD CONSTRAINT `rules_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
