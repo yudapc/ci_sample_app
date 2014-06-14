@@ -21,12 +21,18 @@
                     <?php endif?>
 
                     <?php if(check_role('users', 'index')): ?>
-                      <li><a href="<?=site_url('users')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Users</span></a></li>
+                      <li>
+                          <a class="dropmenu" href="#"><i class="icon-align-justify icon-white"></i><span class="hidden-tablet"> Users Management</span></a>
+                          <ul>
+                            <li><a href="<?=site_url('users')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Users</span></a></li>
+
+                            <?php if(check_role('modules', 'index')): ?>
+                              <li><a href="<?=site_url('modules')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Modules</span></a></li>
+                            <?php endif?>
+                          </ul>
+                      </li>
                     <?php endif?>
 
-                    <?php if(check_role('modules', 'index')): ?>
-                      <li><a href="<?=site_url('modules')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Modules</span></a></li>
-                    <?php endif?>
                     <? /*
                       <li><a href="chart.html"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Charts</span></a></li>
 
