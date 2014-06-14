@@ -54,7 +54,7 @@ class Users extends MY_Controller {
     $data['user'] = $this->user->find($id);
     $data['main_view'] = 'users/edit';
 
-    if(check_role('users', 'update')) {
+    if(check_rule('users', 'update')) {
       $data['form_action_edit'] = 'users/update';
     } else {
       $data['form_action_edit'] = 'profile';
@@ -67,7 +67,7 @@ class Users extends MY_Controller {
     $data['user'] = $this->user->find($id);
     $data['main_view'] = 'users/edit';
 
-    if(check_role('users', 'update')) {
+    if(check_rule('users', 'update')) {
       $data['form_action_edit'] = 'users/update';
     } else {
       $data['form_action_edit'] = 'profile';

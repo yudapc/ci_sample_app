@@ -3,7 +3,7 @@
     <div class="box-header" data-original-title>
     <span> Manage <?php echo class_name()?></span>
       <div class="box-icon">
-        <?php if(check_role(class_name(), 'create')): ?>
+        <?php if(check_rule(class_name(), 'create')): ?>
           <a href="<?php echo site_url(class_name().'/create')?>" class="btn btn-primary">Add Data</a>
         <?php endif?>
       </div>

@@ -98,8 +98,8 @@ if(!function_exists('user_id')) {
   }
 }
 
-if(!function_exists('check_role')) {
-  function check_role($class, $action) {
+if(!function_exists('check_rule')) {
+  function check_rule($class, $action) {
     $CI =& get_instance();
     $actions_allow = array(
                       'dashboard',
@@ -113,10 +113,10 @@ if(!function_exists('check_role')) {
       return true;
     }
 
-    $roles = $CI->user->menu_auth();
-    foreach($roles as $key => $role)   {
-      if ( $role['class'] == $class ){
-        return $roles[$key][$action];
+    $rules = $CI->user->menu_auth();
+    foreach($rules as $key => $rule)   {
+      if ( $rule['class'] == $class ){
+        return $rules[$key][$action];
       }
     }
     return false;

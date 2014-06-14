@@ -1,13 +1,13 @@
 <?php echo form_open($form_action)?>
 
-  <b><?php echo $role->class?></b>
+  <b><?php echo $rule->class?></b>
   <br />
   <br />
 
   <?php echo form_checkbox(array(
     'name' => 'index',
     'value' => 1,
-    'checked' => $role->index,
+    'checked' => $rule->index,
   ))?>
   Index <br />
   <?php echo form_error('index')?>
@@ -16,7 +16,7 @@
   <?php echo form_checkbox(array(
     'name' => 'show',
     'value' => 1,
-    'checked' => $role->show,
+    'checked' => $rule->show,
   ))?>
   Show <br />
   <?php echo form_error('show')?>
@@ -25,7 +25,7 @@
   <?php echo form_checkbox(array(
     'name' => 'create',
     'value' => 1,
-    'checked' => $role->create,
+    'checked' => $rule->create,
   ))?>
   Create<br />
   <?php echo form_error('create')?>
@@ -34,7 +34,7 @@
   <?php echo form_checkbox(array(
     'name' => 'store',
     'value' => 1,
-    'checked' => $role->store,
+    'checked' => $rule->store,
   ))?>
   Store<br />
   <?php echo form_error('store')?>
@@ -43,7 +43,7 @@
   <?php echo form_checkbox(array(
     'name' => 'edit',
     'value' => 1,
-    'checked' => $role->edit,
+    'checked' => $rule->edit,
   ))?>
   Edit<br />
   <?php echo form_error('edit')?>
@@ -52,7 +52,7 @@
   <?php echo form_checkbox(array(
     'name' => 'update',
     'value' => 1,
-    'checked' => $role->update,
+    'checked' => $rule->update,
   ))?>
   Update<br />
   <?php echo form_error('edit')?>
@@ -61,7 +61,7 @@
   <?php echo form_checkbox(array(
     'name' => 'destroy',
     'value' => 1,
-    'checked' => $role->destroy,
+    'checked' => $rule->destroy,
   ))?>
   Destroy<br />
   <?php echo form_error('destroy')?>
@@ -70,7 +70,7 @@
   <?php echo form_checkbox(array(
     'name' => 'download',
     'value' => 1,
-    'checked' => $role->download,
+    'checked' => $rule->download,
   ))?>
   Download<br />
   <?php echo form_error('download')?>

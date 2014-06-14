@@ -1,17 +1,17 @@
 <?php
 
-class Role extends MY_Model {
+class Rule extends MY_Model {
 
   public function __construct() {
     parent::__construct();
   }
 
-  var $table = 'roles';
+  var $table = 'rules';
 
-  public function roles($user_id) {
-    $this->db->select('modules.class, roles.*');
+  public function rules($user_id) {
+    $this->db->select('modules.class, rules.*');
     $this->db->from('modules');
-    $this->db->join('roles', 'roles.module_id = modules.id', 'left');
+    $this->db->join('rules', 'rules.module_id = modules.id', 'left');
     $this->db->where('user_id', $user_id);
     return $this->db->get()->result();
   }
@@ -21,9 +21,9 @@ class Role extends MY_Model {
   }
 
   public function find($id) {
-    $this->db->select('modules.class, roles.*');
-    $this->db->join('modules', 'roles.module_id = modules.id', 'left');
-    $this->db->where('roles.id', $id);
+    $this->db->select('modules.class, rules.*');
+    $this->db->join('modules', 'rules.module_id = modules.id', 'left');
+    $this->db->where('rules.id', $id);
     return $this->db->get($this->table)->row();
   }
 

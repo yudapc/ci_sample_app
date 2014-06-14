@@ -12,21 +12,21 @@
 
                         </ul>
                     </li>
-                    <?php if(check_role('products', 'index')): ?>
+                    <?php if(check_rule('products', 'index')): ?>
                       <li><a href="<?=site_url('products')?>"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Product</span></a></li>
                     <?php endif?>
 
-                    <?php if(check_role('customers', 'index')): ?>
+                    <?php if(check_rule('customers', 'index')): ?>
                       <li><a href="<?=site_url('customers')?>"><i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Customers</span></a></li>
                     <?php endif?>
 
-                    <?php if(check_role('users', 'index')): ?>
+                    <?php if(check_rule('users', 'index')): ?>
                       <li>
                           <a class="dropmenu" href="#"><i class="icon-align-justify icon-white"></i><span class="hidden-tablet"> Users Management</span></a>
                           <ul>
                             <li><a href="<?=site_url('users')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Users</span></a></li>
 
-                            <?php if(check_role('modules', 'index')): ?>
+                            <?php if(check_rule('modules', 'index')): ?>
                               <li><a href="<?=site_url('modules')?>"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Modules</span></a></li>
                             <?php endif?>
                           </ul>
