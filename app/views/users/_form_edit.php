@@ -1,5 +1,15 @@
 <?php echo form_open($form_action_edit)?>
 
+  <?php 
+    $options = array();
+    foreach($this->user->levels() as $level) {
+      $options[$level->id]= $level->level;
+    }
+    echo form_dropdown('level', $options);
+  ?>
+  <?php echo form_error('level')?>
+  <br />
+
   <?php echo form_input(
     array(
       'name' => 'username',

@@ -8,13 +8,11 @@ class Modules extends MY_Controller {
 
   public function index() {
     $data['modules'] = $this->module->all();
-    $data['main_view'] = 'modules/index';
     $this->render($data);
   }
 
   public function create() {
     $data['form_action'] = 'modules/store';
-    $data['main_view'] = 'modules/create';
     $this->render($data);
   }
 
@@ -30,7 +28,6 @@ class Modules extends MY_Controller {
         $this->module->create($data);
         redirect('modules');
       } else {
-        $data['main_view'] = 'modules/create';
         $this->render($data);
       }
     } else {
@@ -42,7 +39,6 @@ class Modules extends MY_Controller {
     $this->session->set_userdata(array('module_id_edit' => $id));
     $data['module'] = $this->module->find($id);
     $data['form_action'] = 'modules/update';
-    $data['main_view'] = 'modules/edit';
     $this->render($data);
   }
 
@@ -50,7 +46,6 @@ class Modules extends MY_Controller {
     $id = $this->session->userdata('module_id_edit');
     $data['module'] = $this->module->find($id);
     $data['form_action'] = 'modules/update';
-    $data['main_view'] = 'modules/edit';
 
     if($this->input->post('submit')) {
       $this->form_validation->set_rules('class', 'Module', 'required');

@@ -8,25 +8,20 @@ class Products extends MY_Controller {
 
   public function index() {
     $data['products'] = $this->product->all();
-    $data['main_view'] = 'products/index';
     $this->render($data);
   }
 
   public function show($id) {
     $data['product'] = $this->product->find($id);
-    $data['main_view'] = 'products/show';
     $this->render($data);
   }
 
   public function create() {
     $data['form_action'] = 'products/store';
-    $data['types_of_products'] = $this->product->types_of_products();
-    $data['main_view'] = 'products/create';
     $this->render($data);
   }
 
   public function store() {
-    $data['types_of_products'] = $this->product->types_of_products();
     $data['form_action'] = 'products/store';
     if($this->input->post('submit')) {
       $this->form_validation->set_rules('name', 'Company Name', 'required|is_unique[products.name]');
@@ -46,7 +41,6 @@ class Products extends MY_Controller {
         $this->product->create($data);
         redirect('products');
       } else {
-        $data['main_view'] = 'products/create';
         $this->render($data);
       }
     } else {
@@ -57,18 +51,14 @@ class Products extends MY_Controller {
   public function edit($id) {
     $this->session->set_userdata(array('product_id_edit' => $id));
     $data['product'] = $this->product->find($id);
-    $data['types_of_products'] = $this->product->types_of_products();
     $data['form_action'] = 'products/update';
-    $data['main_view'] = 'products/edit';
     $this->render($data);
   }
 
   public function update() {
     $id = $this->session->userdata('product_id_edit');
     $data['product'] = $this->product->find($id);
-    $data['types_of_products'] = $this->product->types_of_products();
     $data['form_action'] = 'products/update';
-    $data['main_view'] = 'products/edit';
 
     if($this->input->post('submit')) {
       $this->form_validation->set_rules('name', 'Company Name', 'required');

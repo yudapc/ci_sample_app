@@ -10,7 +10,7 @@
     </div>
     <div class="box-content">
       <table class="table table-striped table-bordered bootstrap-datatable datatable">
-        <?php $this->load->view($main_view)?>
+        <?php $this->load->view(class_name().'/'.$view)?>
       </table>
     </div>
   </div><!--/span-->

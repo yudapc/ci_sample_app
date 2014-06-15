@@ -8,13 +8,11 @@ class Levels extends MY_Controller {
 
   public function index() {
     $data['levels'] = $this->level->all();
-    $data['main_view'] = 'levels/index';
     $this->render($data);
   }
 
   public function create() {
     $data['form_action'] = 'levels/store';
-    $data['main_view'] = 'levels/create';
     $this->render($data);
   }
 
@@ -30,7 +28,6 @@ class Levels extends MY_Controller {
         $this->level->create($data);
         redirect('levels');
       } else {
-        $data['main_view'] = 'levels/create';
         $this->render($data);
       }
     } else {
@@ -42,7 +39,6 @@ class Levels extends MY_Controller {
     $this->session->set_userdata(array('level_id_edit' => $id));
     $data['level'] = $this->level->find($id);
     $data['form_action'] = 'levels/update';
-    $data['main_view'] = 'levels/edit';
     $this->render($data);
   }
 
@@ -50,7 +46,6 @@ class Levels extends MY_Controller {
     $id = $this->session->userdata('level_id_edit');
     $data['level'] = $this->level->find($id);
     $data['form_action'] = 'levels/update';
-    $data['main_view'] = 'levels/edit';
 
     if($this->input->post('submit')) {
       $this->form_validation->set_rules('level', 'Level', 'required');

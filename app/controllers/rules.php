@@ -6,21 +6,15 @@ class Rules extends MY_Controller {
     $this->load->model('rule');
   }
 
-  public function index() {
-    redirect('rules/form');
-  }
-
-  public function form($user_id = null) {
+  public function index($user_id = null) {
     $this->session->set_userdata(array('user_id' => $user_id));
     $data['rules'] = $this->rule->rules($user_id);
-    $data['main_view'] = 'rules/index';
     $this->render($data);
   }
 
   public function create() {
     $data['modules'] = $this->rule->modules();
     $data['form_action'] = 'rules/store';
-    $data['main_view'] = 'rules/create';
     $this->render($data);
   }
 
@@ -44,9 +38,8 @@ class Rules extends MY_Controller {
                  'download' => $this->input->post('download'),
               );
         $this->rule->create($data);
-        redirect('rules/form/'.$this->session->userdata('user_id'));
+        redirect('rules/index/'.$this->session->userdata('user_id'));
       } else {
-        $data['main_view'] = 'rules/create';
         $this->render($data);
       }
     } else {
@@ -58,7 +51,6 @@ class Rules extends MY_Controller {
     $data['modules'] = $this->rule->modules();
     $data['rule'] = $this->rule->find($id);
     $data['form_action'] = 'rules/update/'.$id;
-    $data['main_view'] = 'rules/edit';
     $this->render($data);
   }
 
@@ -66,7 +58,6 @@ class Rules extends MY_Controller {
     $data['modules'] = $this->rule->modules();
     $data['rule'] = $this->rule->find($id);
     $data['form_action'] = 'rules/update/'.$id;
-    $data['main_view'] = 'rule/edit';
 
     if($this->input->post('submit')) {
       $index = ($this->input->post('index') == 1) ? $this->input->post('index') : 0;
@@ -90,7 +81,7 @@ class Rules extends MY_Controller {
             );
 
       $this->rule->update($id, $data);
-      redirect('rules/form/'.$this->session->userdata('user_id'));
+      redirect('rules/index/'.$this->session->userdata('user_id'));
     } else {
         $this->render($data);
     }
@@ -98,7 +89,7 @@ class Rules extends MY_Controller {
 
   public function destroy($id) {
     $this->rule->delete($id);
-    redirect('rules/form/'.$this->session->userdata('user_id'));
+    redirect('rules/index/'.$this->session->userdata('user_id'));
   }
 
 }

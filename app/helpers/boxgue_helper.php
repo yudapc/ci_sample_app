@@ -102,10 +102,8 @@ if(!function_exists('check_rule')) {
   function check_rule($class, $action) {
     $CI =& get_instance();
     $actions_allow = array(
-                      'dashboard',
                       'active',
                       'deactive',
-                      'form',
                       'status',
                       'profile'
                     );

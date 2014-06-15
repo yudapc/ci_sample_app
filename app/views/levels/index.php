@@ -18,7 +18,7 @@
     <tr class="<?php echo ($index%2 == 0) ? 'zebra' : 'cross'?>">
         <td> <?php echo $level->level?> </td>
 
-        <td> <?=anchor('defaultrules/form/'.$level->id, '<i class="icon-ok"></i> Set Rules', array('onclick' => "return confirm('Do you want to edit this data?')"))?> </td>
+        <td> <?=anchor('defaultrules/index/'.$level->id, '<i class="icon-ok"></i> Set Rules', array('onclick' => "return confirm('Do you want to edit this data?')"))?> </td>
 
         <?php if(check_rule(class_name(), 'edit')): ?>
           <td> <?=anchor('levels/edit/'.$level->id, '<i class="icon-edit"></i> Edit', array('onclick' => "return confirm('Do you want to edit this data?')"))?> </td>

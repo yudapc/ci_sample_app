@@ -6,21 +6,15 @@ class Defaultrules extends MY_Controller {
     $this->load->model('defaultrule');
   }
 
-  public function index() {
-    redirect('defaultrules/form');
-  }
-
-  public function form($level_id = null) {
+  public function index($level_id = null) {
     $this->session->set_userdata(array('level_id' => $level_id));
     $data['defaultrules'] = $this->defaultrule->defaultrules($level_id);
-    $data['main_view'] = 'defaultrules/index';
     $this->render($data);
   }
 
   public function create() {
     $data['modules'] = $this->defaultrule->modules();
     $data['form_action'] = 'defaultrules/store';
-    $data['main_view'] = 'defaultrules/create';
     $this->render($data);
   }
 
@@ -44,9 +38,8 @@ class Defaultrules extends MY_Controller {
                  'download' => $this->input->post('download'),
               );
         $this->defaultrule->create($data);
-        redirect('defaultrules/form/'.$this->session->userdata('level_id'));
+        redirect('defaultrules/index/'.$this->session->userdata('level_id'));
       } else {
-        $data['main_view'] = 'defaultrules/create';
         $this->render($data);
       }
     } else {
@@ -58,7 +51,6 @@ class Defaultrules extends MY_Controller {
     $data['modules'] = $this->defaultrule->modules();
     $data['defaultrule'] = $this->defaultrule->find($id);
     $data['form_action'] = 'defaultrules/update/'.$id.'/'.$level_id;
-    $data['main_view'] = 'defaultrules/edit';
     $this->render($data);
   }
 
@@ -66,7 +58,6 @@ class Defaultrules extends MY_Controller {
     $data['modules'] = $this->defaultrule->modules();
     $data['defaultrule'] = $this->defaultrule->find($id);
     $data['form_action'] = 'defaultrules/update/'.$id;
-    $data['main_view'] = 'defaultrule/edit';
 
     if($this->input->post('submit')) {
       $index = ($this->input->post('index') == 1) ? $this->input->post('index') : 0;
@@ -90,7 +81,7 @@ class Defaultrules extends MY_Controller {
             );
 
       $this->defaultrule->update($id, $data);
-      redirect('defaultrules/form/'.$this->session->userdata('level_id'));
+      redirect('defaultrules/index/'.$this->session->userdata('level_id'));
     } else {
         $this->render($data);
     }

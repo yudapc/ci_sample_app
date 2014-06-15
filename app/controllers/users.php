@@ -11,18 +11,14 @@ class Users extends MY_Controller {
 
   public function index() {
     $data['users'] = $this->user->all();
-    $data['main_view'] = 'users/index';
     $this->render($data);
   }
 
   public function create() {
-    $data['main_view'] = 'users/create';
-    $data['levels'] = $this->user->levels();
-    $this->render($data);
+    $this->render();
   }
 
   public function store() {
-    $data['levels'] = $this->user->levels();
     if($this->input->post('submit')) {
       $this->form_validation->set_rules('level', 'Level', 'required');
       $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
@@ -61,8 +57,7 @@ class Users extends MY_Controller {
         }
         redirect('users');
       } else {
-        $data['main_view'] = 'users/create';
-        $this->render($data);
+        $this->render();
       }
     } else {
       redirect('users/create');
@@ -75,7 +70,6 @@ class Users extends MY_Controller {
     }
     $this->session->set_userdata(array('user_id_edit' => $id));
     $data['user'] = $this->user->find($id);
-    $data['main_view'] = 'users/edit';
 
     if(check_rule('users', 'update')) {
       $data['form_action_edit'] = 'users/update';
@@ -88,7 +82,6 @@ class Users extends MY_Controller {
   public function update() {
     $id = $this->session->userdata('user_id_edit');
     $data['user'] = $this->user->find($id);
-    $data['main_view'] = 'users/edit';
 
     if(check_rule('users', 'update')) {
       $data['form_action_edit'] = 'users/update';
@@ -121,7 +114,7 @@ class Users extends MY_Controller {
         $this->render($data);
       }
     } else {
-        $this->render($data);
+      $this->render($data);
     }
   }
 

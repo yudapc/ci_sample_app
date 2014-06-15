@@ -13,7 +13,7 @@
 
   <?php 
     $options = array();
-    foreach($types_of_products as $types_of_product) {
+    foreach($this->product->types_of_products() as $types_of_product) {
       $options[$types_of_product->id]= $types_of_product->type;
     }
     echo form_dropdown('types_of_product', $options);
