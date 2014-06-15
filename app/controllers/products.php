@@ -24,21 +24,9 @@ class Products extends MY_Controller {
   public function store() {
     $data['form_action'] = 'products/store';
     if($this->input->post('submit')) {
-      $this->form_validation->set_rules('name', 'Company Name', 'required|is_unique[products.name]');
-      $this->form_validation->set_rules('types_of_product', 'Types of Product', 'required');
-      $this->form_validation->set_rules('unit', 'Unit', 'required');
-      $this->form_validation->set_rules('purchase_price', 'Purchase Price', 'required');
-      $this->form_validation->set_rules('selling_price', 'Selling_ rice', 'required');
-
+      $this->validate();
       if($this->form_validation->run() == TRUE) {
-        $data = array(
-                 'name' => $this->input->post('name'),
-                 'types_of_product_id' => $this->input->post('types_of_product'),
-                 'unit' => $this->input->post('unit'),
-                 'purchase_price' => $this->input->post('purchase_price'),
-                 'selling_price' => $this->input->post('selling_price'),
-              );
-        $this->product->create($data);
+        $this->product->create($this->inputs());
         redirect('products');
       } else {
         $this->render($data);
@@ -61,22 +49,9 @@ class Products extends MY_Controller {
     $data['form_action'] = 'products/update';
 
     if($this->input->post('submit')) {
-      $this->form_validation->set_rules('name', 'Company Name', 'required');
-      $this->form_validation->set_rules('types_of_product', 'Types of Product', 'required');
-      $this->form_validation->set_rules('unit', 'Unit', 'required');
-      $this->form_validation->set_rules('purchase_price', 'Purchase Price', 'required');
-      $this->form_validation->set_rules('selling_price', 'Selling_ rice', 'required');
-
+      $this->validate();
       if($this->form_validation->run() == TRUE) {
-        $data = array(
-                 'name' => $this->input->post('name'),
-                 'types_of_product_id' => $this->input->post('types_of_product'),
-                 'unit' => $this->input->post('unit'),
-                 'purchase_price' => $this->input->post('purchase_price'),
-                 'selling_price' => $this->input->post('selling_price'),
-              );
-
-        $this->product->update($id, $data);
+        $this->product->update($id, $this->inputs());
         redirect('products');
       } else {
         $this->render($data);
@@ -91,4 +66,26 @@ class Products extends MY_Controller {
     redirect('products');
   }
 
+  private function validate() {
+    if(in_array(action_name(), array('create', 'store'))) {
+      $this->form_validation->set_rules('name', 'Company Name', 'required|is_unique[products.name]');
+    } else {
+      $this->form_validation->set_rules('name', 'Company Name', 'required');
+    }
+    $this->form_validation->set_rules('types_of_product', 'Types of Product', 'required');
+    $this->form_validation->set_rules('unit', 'Unit', 'required');
+    $this->form_validation->set_rules('purchase_price', 'Purchase Price', 'required');
+    $this->form_validation->set_rules('selling_price', 'Selling Price', 'required');
+  }
+
+  private function inputs() {
+    $data = array(
+             'name' => $this->input->post('name'),
+             'types_of_product_id' => $this->input->post('types_of_product'),
+             'unit' => $this->input->post('unit'),
+             'purchase_price' => $this->input->post('purchase_price'),
+             'selling_price' => $this->input->post('selling_price'),
+          );
+    return $data;
+  }
 }
