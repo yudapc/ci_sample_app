@@ -5,7 +5,7 @@
     foreach($this->user->levels() as $level) {
       $options[$level->id]= $level->level;
     }
-    echo form_dropdown('level', $options);
+    echo form_dropdown('level', $options, $user->level_id);
   ?>
   <?php echo form_error('level')?>
   <br />
