@@ -12,7 +12,7 @@ class Defaultrule extends MY_Model {
     $this->db->select('modules.class, default_rules.*');
     $this->db->from('modules');
     $this->db->join('default_rules', 'default_rules.module_id = modules.id', 'left');
-    $this->db->where('level_id', $id);
+    $this->db->where('modules.level_id', $id);
     return $this->db->get()->result();
   }
 
