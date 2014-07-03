@@ -16,7 +16,7 @@
     foreach($this->product->types_of_products() as $types_of_product) {
       $options[$types_of_product->id]= $types_of_product->type;
     }
-    echo form_dropdown('types_of_product', $options, $product->types_of_product_id);
+    echo form_dropdown('types_of_product', $options, isset($product->types_of_product_id) ? $product->types_of_product_id : '');
   ?>
   <?php echo form_error('types_of_product')?>
   <br />
