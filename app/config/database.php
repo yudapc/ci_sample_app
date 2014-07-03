@@ -3,9 +3,16 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
+if(HOST != 'local.') {
+  $db['default']['hostname'] = '';
+  $db['default']['username'] = '';
+  $db['default']['password'] = '';
+} else {
+  $db['default']['hostname'] = 'localhost';
+  $db['default']['username'] = 'root';
+  $db['default']['password'] = 'root';
+}
+
 $db['default']['database'] = 'ci_sample_app';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

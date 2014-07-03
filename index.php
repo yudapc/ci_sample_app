@@ -1,6 +1,21 @@
 <?php
 
-  define('ENVIRONMENT', 'development');
+  date_default_timezone_set('Asia/Jakarta');
+
+  $domain  = explode('.', $_SERVER['HTTP_HOST']);
+  $host = '';
+  if (isset($domain[0])) {
+    switch ($domain[0]) {
+      case 'local' :
+        $host = 'local.';
+        define('ENVIRONMENT', 'development');
+        break;
+      default :
+        define('ENVIRONMENT', 'production');
+    }
+  }
+
+  defined('HOST') || define('HOST', $host);
 
   if (defined('ENVIRONMENT')) {
     switch (ENVIRONMENT) {
