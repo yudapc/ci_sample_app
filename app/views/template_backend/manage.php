@@ -1,4 +1,4 @@
-<div class="row-fluid sortable">
+<div>
   <div class="box span12">
     <div class="box-header" data-original-title>
     <span> Manage <?php echo class_name()?></span>
